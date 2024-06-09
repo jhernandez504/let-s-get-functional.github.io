@@ -42,6 +42,7 @@ var maleCount = function(array) {
  */
 var femaleCount = function(array){
     let females = _.reduce(array, function(acc, curr){
+        
         //if condition to test if current's gender is female
         if(curr.gender === 'female'){
             acc += 1;
@@ -102,7 +103,18 @@ var averageBalance = function(array) {
     return shortenedAvgBalance;
 };
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter){
+    let firstLetterCount = _.reduce(array, function(acc, curr){
+        //if condition to test for first letter of each customer after lowerCase()
+        if(curr['name'].charAt(0).toLowerCase() === letter.toLowerCase()){
+            acc++;
+            
+        }
+        return acc;
+    }, 0);
+    //return firstLetterCount
+    return firstLetterCount
+}
 
 var friendFirstLetterCount;
 
