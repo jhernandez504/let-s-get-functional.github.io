@@ -116,7 +116,25 @@ var firstLetterCount = function(array, letter){
     return firstLetterCount
 }
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter){
+    return _.reduce(array, function(acc, curr){
+        //if customer name is === to current customer name in object
+        if(customer.toLowerCase() === curr.name.toLowerCase()){
+            //for loop to iterate thru current friends list
+            for(let i = 0; i < curr.friends.length; i++){
+                //if first letter of friend at current friend list index 0 
+                //is equal to letter
+                if(curr.friends[i].name.charAt(0).toLowerCase() === letter.toLowerCase()){
+                    //increments acc if true
+                    acc++;
+                }
+            }
+        }
+        //returns total acc
+        return acc;
+    }, 0);
+};
+    
 
 var friendsCount;
 
