@@ -136,7 +136,28 @@ var friendFirstLetterCount = function(array, customer, letter){
 };
     
 
-var friendsCount;
+var friendsCount = function(array, name){
+    //if condition to check if there is a name or if name isnt a string
+    if (!name || typeof name !== 'string') {
+        return []; 
+    }
+    
+    return _.reduce(array, function(acc, curr) {
+        //loop thru current customer's friends list
+        for(let i = 0; i < curr.friends.length; i++){
+            //if friend at index in friends list is equal to name 
+            //lowerCased all letters and removed spaces
+            if(curr.friends[i].name.replace(/\s/g, '').toLowerCase() === name.replace(/\s/g, '').toLowerCase()){
+                //push current customer name to acc array
+                acc.push(curr.name);
+                //break once a friend in friendslist matches name input
+                break;
+            }
+        }
+        //returns acc array
+        return acc;
+    }, []);   
+};
 
 var topThreeTags;
 
