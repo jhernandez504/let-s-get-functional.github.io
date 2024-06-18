@@ -182,7 +182,27 @@ var topThreeTags = function(array) {
 }
 
 
-var genderCount;
+var genderCount = function(array){
+    // use reduce() to accumulate the gender counts
+  let genderCount = array.reduce((acc, customer) => {
+    // check if customer object has a 'gender' property and it's a string
+    if (customer.gender && typeof customer.gender === 'string') {
+      let gender = customer.gender.toLowerCase(); // convert to lowercase 
+      // increment the count for gender
+      if (gender === 'male') {
+        acc.male++;
+      } else if (gender === 'female') {
+        acc.female++;
+      } else if (gender === 'non-binary') {
+        acc['non-binary']++;
+      }
+    } else {   
+    }
+    return acc;
+  }, { male: 0, female: 0, 'non-binary': 0 });
+
+  return genderCount;
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
