@@ -159,7 +159,28 @@ var friendsCount = function(array, name){
     }, []);   
 };
 
-var topThreeTags;
+var topThreeTags = function(array) {
+   // use the reduce() to accumulate the key counts
+   let tagCounter = array.reduce((acc, curr) => {
+    // check if curr has tags array
+    if (curr.tags && Array.isArray(curr.tags)) {
+      // iterate over each tag in the curr customer's tags array
+      curr.tags.forEach(tag => {
+        acc[tag] = (acc[tag] || 0) + 1;
+      });
+    }
+    return acc;
+  }, {});
+  // convert the tagCounter object to an array of tag/count pairs
+  let tagCountArray = Object.entries(tagCounter);
+  // sorts the array by count in descending order
+  tagCountArray.sort((a, b) => b[1] - a[1]);
+  // find the top three tags
+  let topThreeTags = tagCountArray.slice(0, 3).map(item => item[0]);
+
+  return topThreeTags;
+}
+
 
 var genderCount;
 
